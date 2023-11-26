@@ -29,7 +29,7 @@
                 <div class="p-4 bg-gray-50 border-t border-gray-200">
                     <!-- Botones de Acción -->
                     <div class="flex justify-between items-center">
-                        <a href="#" class="bg-blue-500 text-white p-2 text-center hover:bg-blue-600 transition duration-300 block">Add Invitados</a>
+                        <a href="{{ route('evento.invitados', $event->id) }}" class="bg-blue-500 text-white p-2 text-center hover:bg-blue-600 transition duration-300 block">Add Invitados</a>
                         <a href="{{ route('evento.edit', $event->id) }}" class="text-gray-600 ml-2 hover:text-blue-500 focus:outline-none block">
                             <!-- Icono de Editar -->
                             <i class="fas fa-edit"></i> Editar

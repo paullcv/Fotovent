@@ -75,6 +75,11 @@ Route::get('evento/Fotografos/{id}', [EventController::class, 'fotografos'])
     //->middleware(Subscripcion::class)
     ->name('evento.fotografos');
 
+Route::get('evento/Invitados/{id}', [EventController::class, 'invitados'])
+    ->middleware('auth')
+    //->middleware(Subscripcion::class)
+    ->name('evento.invitados');
+
 //Vista mis eventos
 Route::get('/Eventos/miseventos', [MiVento::class, 'index'])
     ->middleware('auth')

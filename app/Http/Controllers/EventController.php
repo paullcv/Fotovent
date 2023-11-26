@@ -24,4 +24,9 @@ class EventController extends Controller
         $event = Event::find($id);
         return view('Event.fotografos', compact('event'));
     }
+
+    public function invitados($id){
+        $event = Event::find($id);
+        return view('Event.invitados', compact('event'));
+    }
 }
