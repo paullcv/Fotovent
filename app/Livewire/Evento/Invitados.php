@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Evento;
 
+use App\Mail\Notificaciones;
 use App\Models\Invitado;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class Invitados extends Component
@@ -47,16 +49,11 @@ class Invitados extends Component
     {
         $invitado = Invitado::find($invitadoId);
 
+         // Obtener el evento asociado al invitado
+         $event = $invitado->evento;
+
         if ($invitado) {
-            // Aquí deberías llamar a tu lógica para enviar la invitación por Gmail
-            // Por ejemplo, podrías usar una clase dedicada para manejar esta lógica.
-
-            // Después de enviar la invitación, puedes agregar lógica adicional si es necesario.
-
-            // Ejemplo:
-            // InvitacionService::enviarInvitacion($invitado->email);
-
-            // Puedes ajustar esto según tus necesidades y la lógica específica que estás utilizando.
+            Mail::to($invitado->email)->send(new Notificaciones($event));
         }
     }
 
