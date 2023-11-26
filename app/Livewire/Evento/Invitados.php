@@ -43,10 +43,28 @@ class Invitados extends Component
         }
     }
 
+    public function enviarInvitacion($invitadoId)
+    {
+        $invitado = Invitado::find($invitadoId);
+
+        if ($invitado) {
+            // Aquí deberías llamar a tu lógica para enviar la invitación por Gmail
+            // Por ejemplo, podrías usar una clase dedicada para manejar esta lógica.
+
+            // Después de enviar la invitación, puedes agregar lógica adicional si es necesario.
+
+            // Ejemplo:
+            // InvitacionService::enviarInvitacion($invitado->email);
+
+            // Puedes ajustar esto según tus necesidades y la lógica específica que estás utilizando.
+        }
+    }
+
+
     public function render()
     {
         $invitados = Invitado::where('evento_id', $this->event->id)->get();
 
         return view('livewire.evento.invitados', ['invitados' => $invitados]);
     }
-} 
+}

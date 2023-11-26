@@ -43,6 +43,9 @@
                         <button wire:click="eliminarInvitado({{ $invitado->id }})" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition duration-300">
                             Eliminar
                         </button>
+                        <button wire:click="enviarInvitacion({{ $invitado->id }})" class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition duration-300">
+                            Enviar Invitación
+                        </button>
                     </td>
                 </tr>
             @empty
