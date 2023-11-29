@@ -76,7 +76,7 @@
                     </span>
                 </li>
 
-                <ul>
+                {{-- <ul>
                     <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 hover:text-blue-300 dark:hover:text-blue-200"
                             href="{{ route('evento.index') }}">
@@ -88,19 +88,58 @@
                             </svg>
                             <span class="ml-4">Organizar Evento</span>
                         </a>
-                    </li>
+                    </li> --}}
 
-                    <!-- Agrega un separador aquí -->
-                    <hr class="my-2 border-t border-gray-600">
+                @if (auth()->user()->subscribedToPrice('price_1O8rF5Dh3Rgs6haXBpBaq63L', 'Fotovent'))
                     <li class="relative px-6 py-3">
-                        <span
-                            class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 hover:text-blue-300 dark:hover:text-blue-200">
-                            <!-- Texto del separador -->
-                            <span class="ml-4">Fotografos</span>
-                        </span>
+                        <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 hover:text-blue-300 dark:hover:text-blue-200"
+                            href="{{ route('evento.index') }}">
+                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
+                                stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
+                                </path>
+                            </svg>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 17v1a1 1 0 001 1h4a1 1 0 001-1v-1"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 15s-2-4-6-4H9c-4 0-6 4-6 4"></path>
+                            <path d="M3 21h18a2 2 0 002-2v-1H1v1a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="ml-4">Organizar Evento</span>
+                        </a>
                     </li>
-
+                @else
                     <li class="relative px-6 py-3">
+                        <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 hover:text-blue-300 dark:hover:text-blue-200"
+                            href="{{ route('evento.index') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="white">
+                                <path
+                                    d="M149.1 64.8L138.7 96H64C28.7 96 0 124.7 0 160V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H373.3L362.9 64.8C356.4 45.2 338.1 32 317.4 32H194.6c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z" />
+                            </svg>
+                            <path
+                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                            </path>
+                            <span class="ml-4">Organizar Evento</span>
+                            <!-- Ícono de candado -->
+                            <i class="fas fa-lock ml-2"></i>
+                        </a>
+                    </li>
+                @endif
+
+                <!-- Agrega un separador aquí -->
+                <hr class="my-2 border-t border-gray-600">
+                <li class="relative px-6 py-3">
+                    <span
+                        class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 hover:text-blue-300 dark:hover:text-blue-200">
+                        <!-- Texto del separador -->
+                        <span class="ml-4">Fotografos</span>
+                    </span>
+                </li>
+
+
+
+                {{-- <li class="relative px-6 py-3">
                         <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 hover:text-blue-300 dark:hover:text-blue-200"
                             href="{{ route('catalogo.index') }}">
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="white">
@@ -111,48 +150,46 @@
 
                             <span class="ml-4">Crear Catalogo</span>
                         </a>
-                    </li>
+                    </li> --}}
 
-                    {{-- @if (auth()->user()->subscribedToPrice('price_1O8rF5Dh3Rgs6haXBpBaq63L', 'Fotovent'))
-                        <li class="relative px-6 py-3">
-                            <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 hover:text-blue-300 dark:hover:text-blue-200"
-                                href="{{ route('presentacion.index') }}">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 17v1a1 1 0 001 1h4a1 1 0 001-1v-1"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M21 15s-2-4-6-4H9c-4 0-6 4-6 4"></path>
-                                    <path d="M3 21h18a2 2 0 002-2v-1H1v1a2 2 0 002 2z"></path>
-                                </svg>
-                                <span class="ml-4">Perfil Profesional</span>
-                            </a>
-                        </li>
-                    @else
-                        <li class="relative px-6 py-3">
-                            <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 hover:text-blue-300 dark:hover:text-blue-200"
-                                href="{{ route('presentacion.index') }}">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 17v1a1 1 0 001 1h4a1 1 0 001-1v-1"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M21 15s-2-4-6-4H9c-4 0-6 4-6 4"></path>
-                                    <path d="M3 21h18a2 2 0 002-2v-1H1v1a2 2 0 002 2z"></path>
-                                </svg>
+                @if (auth()->user()->subscribedToPrice('price_1O8rF5Dh3Rgs6haXBpBaq63L', 'Fotovent'))
+                    <li class="relative px-6 py-3">
+                        <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 hover:text-blue-300 dark:hover:text-blue-200"
+                            href="{{ route('catalogo.index') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512" fill="white">
                                 <path
-                                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
-                                </path>
-                                </svg>
-                                <span class="ml-4">Perfil Profesional</span>
-                                <!-- Ícono de candado -->
-                                <i class="fas fa-lock ml-2"></i>
-                            </a>
-                        </li>
-                    @endif --}}
+                                    d="M149.1 64.8L138.7 96H64C28.7 96 0 124.7 0 160V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H373.3L362.9 64.8C356.4 45.2 338.1 32 317.4 32H194.6c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z" />
+                            </svg>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 17v1a1 1 0 001 1h4a1 1 0 001-1v-1"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 15s-2-4-6-4H9c-4 0-6 4-6 4"></path>
+                            <path d="M3 21h18a2 2 0 002-2v-1H1v1a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="ml-4">Crear Catalogo</span>
+                        </a>
+                    </li>
+                @else
+                    <li class="relative px-6 py-3">
+                        <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 hover:text-blue-300 dark:hover:text-blue-200"
+                            href="{{ route('catalogo.index') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"
+                                fill="white">
+                                <path
+                                    d="M149.1 64.8L138.7 96H64C28.7 96 0 124.7 0 160V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H373.3L362.9 64.8C356.4 45.2 338.1 32 317.4 32H194.6c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z" />
+                            </svg>
+                            <path
+                                d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                            </path>
+                            <span class="ml-4">Crear Catalogo</span>
+                            <!-- Ícono de candado -->
+                            <i class="fas fa-lock ml-2"></i>
+                        </a>
+                    </li>
+                @endif
 
-                </ul>
             </ul>
+        </ul>
     </div>
 
     <div class="mt-auto px-6 mb-6">

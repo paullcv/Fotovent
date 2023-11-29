@@ -54,30 +54,30 @@ Route::get('/subscripcion', [SubscripcionController::class, 'index'])
     ->name('subscripcion');
 
 
-//Eventos CRUD
+//Eventos 
 Route::get('/evento', [EventController::class, 'index'])
     ->middleware('auth')
-    //->middleware(Subscripcion::class)
+    ->middleware(Subscripcion::class)
     ->name('evento.index');
 
 Route::get('evento/Create', [EventController::class, 'vistaCreate'])
     ->middleware('auth')
-    //->middleware(Subscripcion::class)
+    ->middleware(Subscripcion::class)
     ->name('evento.create');
 
 Route::get('evento/Edit/{id}', [EventController::class, 'vistaEdit'])
     ->middleware('auth')
-    //->middleware(Subscripcion::class)
+    ->middleware(Subscripcion::class)
     ->name('evento.edit');
 
 Route::get('evento/Fotografos/{id}', [EventController::class, 'fotografos'])
     ->middleware('auth')
-    //->middleware(Subscripcion::class)
+    ->middleware(Subscripcion::class)
     ->name('evento.fotografos');
 
 Route::get('evento/Invitados/{id}', [EventController::class, 'invitados'])
     ->middleware('auth')
-    //->middleware(Subscripcion::class)
+    ->middleware(Subscripcion::class)
     ->name('evento.invitados');
 
 //Vista mis eventos
@@ -90,14 +90,17 @@ Route::get('/Eventos/miseventos', [MiVento::class, 'index'])
 // Catalogo de Fotos
 Route::get('/catalogo', [CatalogoController::class, 'index'])
     ->middleware('auth')
+    ->middleware(Fotografos::class)
     ->name('catalogo.index');
 
 Route::get('/catalogo/create', [CatalogoController::class, 'vistaCreate'])
     ->middleware('auth')
+    ->middleware(Fotografos::class)
     ->name('catalogo.create');
 
 Route::get('catalogo/edit/{id}', [CatalogoController::class, 'vistaEdit'])
     ->middleware('auth')
+    ->middleware(Fotografos::class)
     ->name('catalogo.edit');
 
 
@@ -114,14 +117,6 @@ Route::get('compra/foto/{photo}', [CompraController::class, 'detalles'])
 Route::get('compra/realizadas', [CompraController::class, 'adquisiciones'])
     ->middleware('auth')
     ->name('compra.realizadas');
-
-
-
-//Presentacion (Perfil Profesional del Fotografo)
-Route::get('/Presentacion', [PresentationController::class, 'index'])
-    ->middleware('auth')
-    ->middleware(Fotografos::class)
-    ->name('presentacion.index');
 
 
 //Pagina de Gracias
