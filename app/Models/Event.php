@@ -27,7 +27,8 @@ class Event extends Model
     }
 
     public function invitados(){
-        return $this->hasMany(Invitado::class);
+        return $this->hasMany(Invitado::class, 'evento_id'); // 'evento_id' es el nombre de la columna en la tabla de invitados
+
     }
 
     

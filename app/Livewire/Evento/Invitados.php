@@ -5,6 +5,7 @@ namespace App\Livewire\Evento;
 use App\Mail\Notificaciones;
 use App\Models\Invitado;
 use Illuminate\Support\Facades\Mail;
+use Kreait\Laravel\Firebase\Facades\Firebase;
 use Livewire\Component;
 
 class Invitados extends Component

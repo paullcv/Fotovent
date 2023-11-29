@@ -5,6 +5,7 @@ namespace App\Livewire\Catalogo;
 use App\Models\Coincidencia;
 use App\Models\Event;
 use Illuminate\Support\Facades\Storage;
+use Kreait\Laravel\Firebase\Facades\Firebase;
 use Livewire\Component;
 use Livewire\WithFileUploads; // Importa el trait necesario
 
@@ -67,11 +68,11 @@ class Create extends Component
     public function notificacionAparecesFoto($idusuarios)
     {
         // Verifica si $this->photoId tiene un valor antes de utilizarlo
-    if (!$this->photoId) {
-        // Manejar el caso en que $this->photoId no tiene un valor
-        session()->flash('error', 'Error: ID de foto no disponible.');
-        return;
-    }
+        if (!$this->photoId) {
+            // Manejar el caso en que $this->photoId no tiene un valor
+            session()->flash('error', 'Error: ID de foto no disponible.');
+            return;
+        }
 
         // Elimina IDs duplicados
         $idusuariosUnicos = array_unique($idusuarios);
@@ -90,11 +91,31 @@ class Create extends Component
                         'user_id' => $idusuario,
                         'photo_id' => $this->photoId
                     ]);
+                // Envía la notificación solo si es la primera vez que se encuentra la coincidencia
+                $this->enviarNotificacionFirebase();
                 }
             }
         }
     }
 
+
+    private function enviarNotificacionFirebase()
+    {
+        $tokenfirebase = 'cUBZ61xgSwGJfnI-0yLQW6:APA91bEC17WRVi-PC99LoIxDg0HvC0EKwW2z43x35jHFqrSV8fnAMcPt5vxXJfYi6r4z62-YGjcEfWcvvGK6VDBUqZ-XvmYHeYBFzx_ubJaNUrKvvfiZ334H_r1O08z_p0k71RzPwd1G';
+
+        $message = [
+            'notification' => [
+                'title' => '¡Usted Aparece en una foto!',
+                'body' => 'Usted fue identificado en una foto publicada por un fotógrafo del evento',
+            ],
+            'data' => [
+                'key' => 'value',
+            ],
+            'token' => $tokenfirebase, // Especifica el token directamente aquí
+        ];
+
+        Firebase::messaging()->send($message);
+    }
 
 
     public function render()

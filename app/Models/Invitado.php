@@ -12,6 +12,6 @@ class Invitado extends Model
 
     public function evento()
     {
-        return $this->belongsTo(Event::class); // Corrección aquí
+        return $this->belongsTo(Event::class); 
     }
 }
