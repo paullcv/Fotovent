@@ -91,8 +91,21 @@ class Create extends Component
                         'user_id' => $idusuario,
                         'photo_id' => $this->photoId
                     ]);
-                // Envía la notificación solo si es la primera vez que se encuentra la coincidencia
-                $this->enviarNotificacionFirebase();
+                    // Envía la notificación solo si es la primera vez que se encuentra la coincidencia
+                    $tokenfirebase = 'cUBZ61xgSwGJfnI-0yLQW6:APA91bEC17WRVi-PC99LoIxDg0HvC0EKwW2z43x35jHFqrSV8fnAMcPt5vxXJfYi6r4z62-YGjcEfWcvvGK6VDBUqZ-XvmYHeYBFzx_ubJaNUrKvvfiZ334H_r1O08z_p0k71RzPwd1G';
+
+                    $message = [
+                        'notification' => [
+                            'title' => '¡Apareces en una foto!',
+                            'body' => 'Usted fue identificado en una foto publicada por un fotógrafo del evento',
+                        ],
+                        'data' => [
+                            'key' => 'value',
+                        ],
+                        'token' => $tokenfirebase, // Especifica el token directamente aquí
+                    ];
+
+                    Firebase::messaging()->send($message);
                 }
             }
         }
@@ -105,7 +118,7 @@ class Create extends Component
 
         $message = [
             'notification' => [
-                'title' => '¡Usted Aparece en una foto!',
+                'title' => '¡Apareces en una foto!',
                 'body' => 'Usted fue identificado en una foto publicada por un fotógrafo del evento',
             ],
             'data' => [

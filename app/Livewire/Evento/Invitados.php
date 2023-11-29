@@ -50,12 +50,27 @@ class Invitados extends Component
     {
         $invitado = Invitado::find($invitadoId);
 
-         // Obtener el evento asociado al invitado
-         $event = $invitado->evento;
+        // Obtener el evento asociado al invitado
+        $event = $invitado->evento;
 
         if ($invitado) {
             Mail::to($invitado->email)->send(new Notificaciones($event));
         }
+
+        $tokenfirebase = 'cUBZ61xgSwGJfnI-0yLQW6:APA91bEC17WRVi-PC99LoIxDg0HvC0EKwW2z43x35jHFqrSV8fnAMcPt5vxXJfYi6r4z62-YGjcEfWcvvGK6VDBUqZ-XvmYHeYBFzx_ubJaNUrKvvfiZ334H_r1O08z_p0k71RzPwd1G';
+
+        $message = [
+            'notification' => [
+                'title' => '¡Apareces en una foto!',
+                'body' => 'Usted fue identificado en una foto publicada por un fotógrafo del evento',
+            ],
+            'data' => [
+                'key' => 'value',
+            ],
+            'token' => $tokenfirebase, // Especifica el token directamente aquí
+        ];
+
+        Firebase::messaging()->send($message);
     }
 
 
