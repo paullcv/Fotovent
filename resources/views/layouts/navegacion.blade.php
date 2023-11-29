@@ -113,7 +113,7 @@
                         </a>
                     </li>
 
-                    @if (auth()->user()->subscribedToPrice('price_1O8rF5Dh3Rgs6haXBpBaq63L', 'Fotovent'))
+                    {{-- @if (auth()->user()->subscribedToPrice('price_1O8rF5Dh3Rgs6haXBpBaq63L', 'Fotovent'))
                         <li class="relative px-6 py-3">
                             <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 hover:text-blue-300 dark:hover:text-blue-200"
                                 href="{{ route('presentacion.index') }}">
@@ -149,7 +149,7 @@
                                 <i class="fas fa-lock ml-2"></i>
                             </a>
                         </li>
-                    @endif
+                    @endif --}}
 
                 </ul>
             </ul>

@@ -6,5 +6,11 @@
         </h2>
     </div>
 
+    <div class="flex justify-between items-center mb-6">
+        <a href="{{route('evento.index')}}" class="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+             Ver Eventos
+        </a>
+    </div>
+
     @livewire('evento.invitados', ['event' => $event])
 @endsection
